@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingLeft="@dimen/activity_horizontal_margin"
+android:paddingRight="@dimen/activity_horizontal_margin"
+android:paddingTop="@dimen/activity_vertical_margin"
+android:paddingBottom="@dimen/activity_vertical_margin"
+tools:context="com.example.adikr.musicplayer2.MusicListActivity"
+android:background="@drawable/bg3"
+android:visibility="visible">
+
+<ListView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/song_list"
+    android:background="#0028c2ff"
+    android:padding="15dp"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentStart="true"
+    android:layout_above="@+id/now_playing" />
+
+<TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/tableLayout"
+    android:layout_above="@+id/seek"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prev"
+            android:id="@+id/prev"
+            android:layout_column="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shuffle"
+            android:id="@+id/shuffle"
+            android:layout_column="2" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:id="@+id/next"
+            android:layout_column="3" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:background="@drawable/my_button_layout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="Play"
+            android:id="@+id/play_button"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:foreground="@drawable/playsign"
+            android:alpha="1"
+            android:visibility="visible"
+            android:layout_column="1" />
+
+        <!--Button
+            android:background="@drawable/my_button_layout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="Pause"
+            android:id="@+id/pause_button"
+            android:layout_marginBottom="10dp"
+            android:foreground="@drawable/stopsign"
+            android:layout_column="2" /-->
+
+        <Button
+            android:background="@drawable/my_button_layout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="Stop"
+            android:id="@+id/stop_button"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_column="2" />
+
+    </TableRow>
+</TableLayout>
+
+<SeekBar
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:id="@+id/seek"
+    android:indeterminate="false"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:background="#fffefd" />
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:ellipsize="marquee"
+    android:text="Current Song Name"
+    android:id="@+id/now_playing"
+    android:singleLine="true"
+    android:background="#170db4"
+    android:padding="2dp"
+    android:gravity="center_horizontal"
+    android:textColor="#d5dadb"
+    android:layout_above="@+id/radioGroup"
+    android:layout_alignParentStart="true" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text=""
+    android:id="@+id/current_time"
+    android:textColor="#FFFFFF"
+    android:textSize="18sp"
+    android:layout_alignTop="@+id/total_time"
+    android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Time"
+        android:id="@+id/total_time"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_column="13"
+        android:translationZ="2dp"
+        android:layout_above="@+id/tableLayout"
+        android:layout_alignEnd="@+id/tableLayout" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_above="@+id/current_time"
+        android:layout_alignParentStart="true"
+        android:id="@+id/radioGroup">
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loop"
+        android:id="@+id/loop_radio"
+        android:checked="false"
+        android:textColor="#FFFFFF"
+        android:onClick="radioClickEvent"
+        android:layout_above="@+id/total_time"
+        android:layout_toEndOf="@+id/next_radio" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shuffle"
+        android:id="@+id/shuffle_radio"
+        android:checked="false"
+        android:textColor="#FFFFFF"
+        android:onClick="radioClickEvent"
+        android:layout_alignTop="@+id/loop_radio"
+        android:layout_toEndOf="@+id/loop_radio" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No shuffling/looping"
+        android:id="@+id/next_radio"
+        android:checked="false"
+        android:textColor="#FFFFFF"
+        android:onClick="radioClickEvent"
+        android:layout_above="@+id/current_time"
+        android:layout_toEndOf="@+id/current_time" />
+</RadioGroup>
+</RelativeLayout>
